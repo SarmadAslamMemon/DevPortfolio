@@ -5,13 +5,17 @@ import { scrollToSection } from "@/lib/utils";
 export default function Hero() {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Parallax Background */}
-      <div 
-        className="absolute inset-0 opacity-10 parallax-bg"
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&h=1080')"
-        }}
-      />
+      {/* Animated Background Grid */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `
+            linear-gradient(rgba(10, 132, 255, 0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(10, 132, 255, 0.1) 1px, transparent 1px)
+          `,
+          backgroundSize: '50px 50px',
+          animation: 'grid-move 20s linear infinite'
+        }} />
+      </div>
       
       <div className="container mx-auto px-6 text-center relative z-10">
         <motion.div

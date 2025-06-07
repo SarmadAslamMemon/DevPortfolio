@@ -9,7 +9,6 @@ export default function CursorEffects() {
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
       
-      // Create particle effect on movement
       if (Math.random() > 0.95) {
         const newParticle = {
           id: Date.now() + Math.random(),
@@ -21,25 +20,32 @@ export default function CursorEffects() {
       }
     };
 
-    const handleMouseEnter = (e: MouseEvent) => {
-      const target = e.target as Element;
-      if (target.closest('button, a, .skill-icon, .project-card, input, textarea')) {
-        setIsHovering(true);
+    const handleMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      try {
+        if (target && (
+          target.tagName === 'BUTTON' ||
+          target.tagName === 'A' ||
+          target.tagName === 'INPUT' ||
+          target.tagName === 'TEXTAREA' ||
+          (target.classList && target.classList.contains('skill-icon')) ||
+          (target.classList && target.classList.contains('project-card'))
+        )) {
+          setIsHovering(true);
+        } else {
+          setIsHovering(false);
+        }
+      } catch (e) {
+        setIsHovering(false);
       }
     };
 
-    const handleMouseLeave = () => {
-      setIsHovering(false);
-    };
-
     window.addEventListener('mousemove', updateMousePosition);
-    document.addEventListener('mouseenter', handleMouseEnter, true);
-    document.addEventListener('mouseleave', handleMouseLeave, true);
+    document.addEventListener('mouseover', handleMouseOver);
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
-      document.removeEventListener('mouseenter', handleMouseEnter, true);
-      document.removeEventListener('mouseleave', handleMouseLeave, true);
+      document.removeEventListener('mouseover', handleMouseOver);
     };
   }, []);
 
@@ -56,7 +62,6 @@ export default function CursorEffects() {
 
   return (
     <>
-      {/* Custom Cursor */}
       <div 
         className={`cursor-dot ${isHovering ? 'cursor-hover' : ''}`}
         style={{
@@ -71,8 +76,6 @@ export default function CursorEffects() {
           top: mousePosition.y - 20,
         }}
       />
-
-      {/* Interactive Background Particles */}
       <div className="interactive-bg">
         {particles.map(particle => (
           <div
