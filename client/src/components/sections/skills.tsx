@@ -1,17 +1,27 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { 
+  SiKotlin, 
+  SiFirebase, 
+  SiSqlite,
+  SiAndroid,
+  SiAmazon,
+  SiGithubactions,
+  SiGoogleplay
+} from "react-icons/si";
+import { Database, Code2 } from "lucide-react";
 
 const skills = [
-  { name: "Kotlin", icon: "🤖", color: "from-android-blue to-blue-600" },
-  { name: "Firebase", icon: "🔥", color: "from-orange-500 to-red-600" },
-  { name: "Room DB", icon: "🗄️", color: "from-purple-500 to-purple-700" },
-  { name: "MVVM", icon: "🏗️", color: "from-android-green to-green-600" },
-  { name: "XML", icon: "📝", color: "from-yellow-500 to-orange-500" },
-  { name: "AWS", icon: "☁️", color: "from-blue-500 to-blue-700" },
-  { name: "Dagger", icon: "🗡️", color: "from-red-500 to-pink-600" },
-  { name: "Play Console", icon: "📱", color: "from-android-blue to-android-green" },
-  { name: "CI/CD", icon: "⚙️", color: "from-gray-600 to-gray-800" }
+  { name: "Kotlin", icon: SiKotlin, color: "from-purple-500 to-purple-700" },
+  { name: "Firebase", icon: SiFirebase, color: "from-orange-500 to-yellow-500" },
+  { name: "Room DB", icon: Database, color: "from-blue-500 to-blue-700" },
+  { name: "MVVM", icon: Code2, color: "from-android-green to-green-600" },
+  { name: "Android", icon: SiAndroid, color: "from-android-green to-green-500" },
+  { name: "AWS", icon: SiAmazon, color: "from-orange-600 to-yellow-600" },
+  { name: "Play Console", icon: SiGoogleplay, color: "from-android-blue to-blue-500" },
+  { name: "CI/CD", icon: SiGithubactions, color: "from-gray-600 to-gray-800" },
+  { name: "SQLite", icon: SiSqlite, color: "from-blue-400 to-blue-600" }
 ];
 
 export default function Skills() {
@@ -50,12 +60,12 @@ export default function Skills() {
               }}
             >
               <motion.div 
-                className={`w-20 h-20 mx-auto mb-4 bg-gradient-to-br ${skill.color} rounded-2xl flex items-center justify-center text-3xl text-white shadow-lg`}
+                className={`w-20 h-20 mx-auto mb-4 bg-gradient-to-br ${skill.color} rounded-2xl flex items-center justify-center text-white shadow-lg`}
                 whileHover={{
                   boxShadow: "0 20px 40px rgba(48, 209, 88, 0.4)"
                 }}
               >
-                <span>{skill.icon}</span>
+                <skill.icon className="w-10 h-10" />
               </motion.div>
               
               <h3 className={`font-semibold ${
