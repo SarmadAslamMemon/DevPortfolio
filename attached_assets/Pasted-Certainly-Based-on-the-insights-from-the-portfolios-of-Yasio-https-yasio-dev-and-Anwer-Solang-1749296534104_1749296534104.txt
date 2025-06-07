@@ -1,0 +1,52 @@
+Certainly! Based on the insights from the portfolios of [Yasio](https://yasio.dev) and [Anwer Solangi](https://anwersolangi.com), here's an enhanced prompt tailored for building a modern, animated Android developer portfolio using Next.js:
+
+---
+
+**Prompt:**
+
+Develop a sleek, modern Android developer portfolio website using Next.js, drawing inspiration from [Yasio](https://yasio.dev) and [Anwer Solangi](https://anwersolangi.com). The site should feature a dark, AMOLED-friendly theme (#121212) with vibrant accents in Android blue (#0A84FF) and green (#30D158), adhering to Material Design 3 guidelines.
+
+**Homepage:**
+
+* Implement a 3D animated hero section introducing: “Hi, I’m \[Your Full Name], Android Developer.”
+* Incorporate smooth fade-in text and a floating 3D Android mascot that subtly rotates on hover.
+* Add parallax background effects for depth.
+
+**About Me:**
+
+* Display a profile photo alongside a brief introduction highlighting:
+
+  * 2 years of experience in Android development.
+  * Proficiency in Kotlin, Room DB, Firebase, MVVM architecture, and XML-based UI design.
+  * Experience with stored procedures in mobile backend integration.
+* Trigger entrance animations on scroll.
+
+**Projects:**
+
+* Showcase three Android apps in a responsive 3-column grid.
+* Each project card should:
+
+  * Tilt in 3D on mouse hover.
+  * Display an app screenshot, name, description, and tech stack tags (e.g., Kotlin, Firebase, Room).
+  * Include direct links to the App Store and Google Play Store.
+
+**Skills:**
+
+* Present glowing 3D icons for technologies like Kotlin, Firebase, Room DB, XML, and MVVM.Dagger 
+Google play console AWS 
+CICD
+* Icons should respond on hover with slight scaling or bouncing animations.
+
+**Contact:**
+
+* Feature a stylish contact form with glowing borders, floating labels, and slide-in animations.
+* Include social icons linking to GitHub and LinkedIn.
+
+**Additional Features:**
+
+* Ensure the site is fully responsive and optimized for performance.
+* Use modern fonts like Poppins or Inter.
+* Integrate Framer Motion or GSAP for smooth transitions and 3D effects.
+* Prioritize interactivity, sleek transitions, and real-time responsiveness to reflect a premium portfolio feel.
+
+
