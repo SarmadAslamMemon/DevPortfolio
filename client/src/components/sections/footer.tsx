@@ -10,7 +10,7 @@ export default function Footer() {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          © 2024 John Doe - Android Developer. Built with passion for mobile innovation.
+          © 2024 Sarmad Aslam - Android Developer. Built with passion for mobile innovation.
         </motion.p>
       </div>
     </footer>

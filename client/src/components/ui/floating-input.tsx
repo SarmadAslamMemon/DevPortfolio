@@ -46,8 +46,8 @@ const FloatingInput = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, F
           />
           <label
             className={cn(
-              "absolute left-4 top-4 text-secondary pointer-events-none transition-all duration-300",
-              (isFocused || hasValue) && "transform -translate-y-8 scale-85 text-android-blue"
+              "absolute left-4 top-4 text-secondary pointer-events-none transition-all duration-300 transform origin-left",
+              (isFocused || hasValue) && "transform -translate-y-6 -translate-x-1 scale-75 text-android-blue bg-surface px-1"
             )}
           >
             {placeholder}
@@ -69,8 +69,8 @@ const FloatingInput = React.forwardRef<HTMLInputElement | HTMLTextAreaElement, F
         />
         <label
           className={cn(
-            "absolute left-4 top-4 text-secondary pointer-events-none transition-all duration-300",
-            (isFocused || hasValue) && "transform -translate-y-8 scale-85 text-android-blue"
+            "absolute left-4 top-4 text-secondary pointer-events-none transition-all duration-300 transform origin-left",
+            (isFocused || hasValue) && "transform -translate-y-6 -translate-x-1 scale-75 text-android-blue bg-surface px-1"
           )}
         >
           {placeholder}

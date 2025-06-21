@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { useToast } from "@/hooks/use-toast";
 import FloatingInput from "@/components/ui/floating-input";
+import emailjs from "emailjs-com";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -37,16 +38,20 @@ export default function Contact() {
 
   const onSubmit = async (data: ContactForm) => {
     setIsSubmitting(true);
-    
-    // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      const serviceID = "service_rjmbi7f";
+      const templateID = "template_on6pc38";
+      const userID = "XrMyBXRk4GNShC1iq";
+      await emailjs.send(serviceID, templateID, {
+        from_name: data.name,
+        from_email: data.email,
+        subject: data.subject,
+        message: data.message
+      }, userID);
       toast({
         title: "Message sent successfully!",
         description: "Thank you for reaching out. I'll get back to you soon.",
       });
-      
       form.reset();
     } catch (error) {
       toast({
@@ -63,27 +68,42 @@ export default function Contact() {
     {
       icon: Mail,
       label: "Email",
-      value: "john.doe@androiddev.com",
-      color: "text-android-blue bg-android-blue/20"
+      value: "sarmadaslammemon@gmail.com",
+      color: "text-android-blue bg-android-blue/20",
+      onClick: () => {
+        window.location.href =
+          'mailto:sarmadaslammemon@gmail.com?subject=Hello%20Sarmad!&body=Hi%20Sarmad%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect.';
+      }
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      color: "text-android-green bg-android-green/20"
+      value: "+92 3042064868",
+      color: "text-android-green bg-android-green/20",
+      onClick: () => {
+        window.open(
+          'https://wa.me/923042064868?text=Hi%20Sarmad%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect!',
+          '_blank'
+        );
+      }
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "San Francisco, CA",
-      color: "text-purple-400 bg-purple-500/20"
+      value: "Karachi Sindh",
+      color: "text-purple-400 bg-purple-500/20",
+      onClick: () => {
+        window.open(
+          'https://www.google.com/maps/search/?api=1&query=Karachi%2C%20Sindh',
+          '_blank'
+        );
+      }
     }
   ];
 
   const socialLinks = [
-    { icon: Linkedin, href: "#", color: "bg-android-blue hover:bg-blue-600" },
-    { icon: Github, href: "#", color: "bg-gray-700 hover:bg-gray-600" },
-    { icon: Twitter, href: "#", color: "bg-android-green hover:bg-green-600" }
+    { icon: Linkedin, href: "https://www.linkedin.com/in/sarmad-aslam-memon-8673a9235", color: "bg-android-blue hover:bg-blue-600" },
+    { icon: Github, href: "https://github.com/SarmadAslamMemon", color: "bg-gray-700 hover:bg-gray-600" }
   ];
 
   return (
@@ -114,19 +134,23 @@ export default function Contact() {
             
             <div className="space-y-4">
               {contactInfo.map((info, index) => (
-                <motion.div 
+                <motion.div
                   key={info.label}
-                  className="flex items-center space-x-4"
+                  className="flex items-center space-x-4 cursor-pointer"
                   initial={{ opacity: 0, x: -20 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                  onClick={info.onClick}
+                  tabIndex={0}
+                  role="button"
+                  onKeyDown={e => { if (e.key === 'Enter' || e.key === ' ') info.onClick(); }}
                 >
                   <div className={`w-12 h-12 ${info.color} rounded-full flex items-center justify-center`}>
                     <info.icon className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="font-semibold">{info.label}</p>
-                    <p className="text-secondary">{info.value}</p>
+                    <p className="text-secondary underline underline-offset-2">{info.value}</p>
                   </div>
                 </motion.div>
               ))}

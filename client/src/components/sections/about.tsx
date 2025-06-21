@@ -31,11 +31,12 @@ export default function About() {
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
+            className="flex justify-center items-center"
           >
             <img 
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+              src="src/assets/main-photo.jpg"
               alt="Professional developer workspace setup" 
-              className="rounded-2xl shadow-2xl w-full hover:scale-105 transition-transform duration-500"
+              className="rounded-2xl shadow-2xl w-[420px] h-[350px] object-cover hover:scale-105 transition-transform duration-500"
             />
           </motion.div>
           
@@ -46,7 +47,7 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <h3 className="text-2xl font-semibold text-android-blue">
-              Passionate Android Developer
+              Passionate Mobile App Developer
             </h3>
             
             <p className="text-lg text-secondary leading-relaxed">
@@ -75,7 +76,13 @@ export default function About() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 1 }}
             >
-              <Button className="px-6 py-3 bg-gradient-to-r from-android-blue to-android-green rounded-full font-semibold hover:shadow-lg transition-all">
+              <Button 
+                className="px-6 py-3 bg-gradient-to-r from-android-blue to-android-green rounded-full font-semibold hover:shadow-lg transition-all"
+                onClick={() => {
+                  const section = document.getElementById('contact');
+                  if (section) section.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
                 Let's Connect
               </Button>
             </motion.div>

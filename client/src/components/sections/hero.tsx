@@ -46,7 +46,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Hi, I'm John Doe
+            Hi, I'm Sarmad Aslam
           </motion.h1>
           
           <motion.h2 
@@ -55,7 +55,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            Android Developer
+            Android Mobile Application Developer
           </motion.h2>
           
           <motion.p 
@@ -84,8 +84,11 @@ export default function Hero() {
               variant="outline"
               size="lg"
               className="px-8 py-4 border-2 border-android-green text-android-green hover:bg-android-green hover:text-black rounded-full font-semibold"
+              asChild
             >
-              Download Resume
+              <a href="/src/assets/Sarmad-App-Dev.pdf" download>
+                Download Resume
+              </a>
             </Button>
           </motion.div>
         </motion.div>
