@@ -1,93 +1,40 @@
 import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { Button } from "@/components/ui/button";
 
 export default function About() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
-  const features = [
-    "Expert in Kotlin and modern Android development",
-    "Proficient in Room DB, Firebase, MVVM architecture",
-    "Experience with XML-based UI design and stored procedures",
-    "Skilled in CI/CD, AWS, Google Play Console"
-  ];
-
   return (
-    <section id="about" className="py-20 bg-surface" ref={ref}>
-      <div className="container mx-auto px-6">
-        <motion.h2 
-          className="text-4xl font-bold text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+    <section id="about" className="py-24 bg-surface">
+      <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-16">
+        {/* Photo */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7 }}
+          className="flex-shrink-0 flex justify-center md:justify-start w-full md:w-auto"
         >
-          About Me
-        </motion.h2>
-        
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex justify-center items-center"
-          >
-            <img 
-              src="src/assets/main-photo.jpg"
-              alt="Professional developer workspace setup" 
-              className="rounded-2xl shadow-2xl w-[420px] h-[350px] object-cover hover:scale-105 transition-transform duration-500"
-            />
-          </motion.div>
-          
-          <motion.div 
-            className="space-y-6"
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <h3 className="text-2xl font-semibold text-android-blue">
-              Passionate Mobile App Developer
-            </h3>
-            
-            <p className="text-lg text-secondary leading-relaxed">
-              With <span className="text-android-green font-semibold">2+ years of experience</span> in Android development, 
-              I specialize in creating robust, scalable mobile applications that deliver exceptional user experiences.
-            </p>
-            
-            <div className="space-y-4">
-              {features.map((feature, index) => (
-                <motion.div 
-                  key={index}
-                  className="flex items-center space-x-3"
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={isInView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-                >
-                  <div className={`w-3 h-3 rounded-full ${index % 2 === 0 ? 'bg-android-blue' : 'bg-android-green'}`} />
-                  <span dangerouslySetInnerHTML={{ __html: feature.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') }} />
-                </motion.div>
-              ))}
-            </div>
-            
-            <motion.div 
-              className="pt-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 1 }}
-            >
-              <Button 
-                className="px-6 py-3 bg-gradient-to-r from-android-blue to-android-green rounded-full font-semibold hover:shadow-lg transition-all"
-                onClick={() => {
-                  const section = document.getElementById('contact');
-                  if (section) section.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Let's Connect
-              </Button>
-            </motion.div>
-          </motion.div>
-        </div>
+          <img 
+            src="/main-photo.jpg"
+            alt="Sarmad Aslam - Android Developer" 
+            className="rounded-2xl shadow-2xl w-64 h-64 object-cover border-4 border-deep-blue"
+          />
+        </motion.div>
+        {/* Text */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="flex-1"
+        >
+          <h2 className="text-4xl font-bold mb-6 gradient-text">About</h2>
+          <p className="text-lg text-soft-gray mb-8 max-w-xl">
+            I'm Sarmad, a passionate Android & full-stack developer based in Karachi. I love building accessible, high-performance mobile and web apps that blend thoughtful design with robust engineering. My favorite work lies at the intersection of user experience and technical excellence.
+          </p>
+          <ul className="space-y-3 text-base text-off-white">
+            <li>• Expert in Kotlin, Jetpack Compose, and modern Android architecture</li>
+            <li>• Proficient with Room DB, Retrofit, and Firebase</li>
+            <li>• Skilled in scalable, maintainable codebases (MVVM, CI/CD)</li>
+            <li>• Advocate for clean code, accessibility, and great UX</li>
+          </ul>
+        </motion.div>
       </div>
     </section>
   );

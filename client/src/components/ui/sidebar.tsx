@@ -1,7 +1,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { VariantProps, cva } from "class-variance-authority"
-import { PanelLeft } from "lucide-react"
+import { PanelLeft, Github, Linkedin } from "lucide-react"
 
 import { useIsMobile } from "@/hooks/use-mobile"
 import { cn } from "@/lib/utils"
@@ -742,6 +742,55 @@ const SidebarMenuSubButton = React.forwardRef<
   )
 })
 SidebarMenuSubButton.displayName = "SidebarMenuSubButton"
+
+const navItems = [
+  { label: 'Home', href: 'home' },
+  { label: 'About', href: 'about' },
+  { label: 'Projects', href: 'projects' },
+  { label: 'Skills', href: 'skills' },
+  { label: 'Contact', href: 'contact' },
+];
+
+export function SidebarNavigation() {
+  const handleNavClick = (href: string) => {
+    const section = document.getElementById(href);
+    if (section) section.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <aside className="hidden md:flex fixed top-0 left-0 h-screen w-64 bg-deep-blue border-r border-soft-blue flex-col justify-between z-40">
+      {/* Logo/Name */}
+      <div className="flex flex-col items-center mt-10 mb-8">
+        <div className="w-16 h-16 rounded-full bg-android-green flex items-center justify-center text-3xl font-bold text-deep-blue shadow-lg mb-4">
+          SA
+        </div>
+        <span className="text-off-white text-xl font-bold tracking-wide">Sarmad Aslam</span>
+        <span className="text-soft-gray text-sm mt-1">Android & Full-Stack Dev</span>
+      </div>
+      {/* Nav Links */}
+      <nav className="flex-1 flex flex-col items-center gap-2">
+        {navItems.map(item => (
+          <button
+            key={item.href}
+            onClick={() => handleNavClick(item.href)}
+            className="w-40 py-2 rounded-lg text-left text-off-white font-medium hover:bg-android-green/10 hover:text-android-green transition-colors duration-200"
+          >
+            {item.label}
+          </button>
+        ))}
+      </nav>
+      {/* Social Links */}
+      <div className="flex flex-row items-center justify-center gap-4 mb-10">
+        <a href="https://github.com/SarmadAslamMemon" target="_blank" rel="noopener noreferrer" className="text-soft-gray hover:text-off-white transition-colors">
+          <Github className="w-6 h-6" />
+        </a>
+        <a href="https://www.linkedin.com/in/sarmad-aslam-memon-8673a9235" target="_blank" rel="noopener noreferrer" className="text-soft-gray hover:text-off-white transition-colors">
+          <Linkedin className="w-6 h-6" />
+        </a>
+      </div>
+    </aside>
+  );
+}
 
 export {
   Sidebar,

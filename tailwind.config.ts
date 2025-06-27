@@ -61,6 +61,11 @@ export default {
           border: "var(--sidebar-border)",
           ring: "var(--sidebar-ring)",
         },
+        'android-green': '#30D158',
+        'deep-blue': '#0A192F',
+        'soft-blue': '#112240',
+        'soft-gray': '#8892b0',
+        'off-white': '#e6f1ff',
       },
       keyframes: {
         "accordion-down": {
@@ -83,6 +88,12 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      fontFamily: {
+        sans: ["Inter", "ui-sans-serif", "system-ui", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "sans-serif"],
+      },
+      backgroundColor: {
+        'dark': '#0A192F',
       },
     },
   },

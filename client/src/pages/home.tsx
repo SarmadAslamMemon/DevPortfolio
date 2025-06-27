@@ -6,18 +6,22 @@ import Skills from "@/components/sections/skills";
 import Contact from "@/components/sections/contact";
 import Footer from "@/components/sections/footer";
 import CursorEffects from "@/components/cursor-effects";
+import { SidebarNavigation } from "@/components/ui/sidebar";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-amoled text-white overflow-x-hidden cursor-none">
+      <SidebarNavigation />
       <CursorEffects />
-      <Navigation />
-      <Hero />
-      <About />
-      <Projects />
-      <Skills />
-      <Contact />
-      <Footer />
+      <div className="md:ml-64">
+        <Navigation />
+        <Hero />
+        <About />
+        <Projects />
+        <Skills />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   );
 }
